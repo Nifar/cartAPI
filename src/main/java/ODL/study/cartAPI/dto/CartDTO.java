@@ -15,6 +15,6 @@ public class CartDTO {
     @NotNull
     Long id;
 
-    List<CartItemDTO> carts;
+    List<CartItemDTO> items;
 
 }

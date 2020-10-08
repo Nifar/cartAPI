@@ -1,5 +1,6 @@
 package ODL.study.cartAPI.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
@@ -14,7 +15,8 @@ public class CartItemDTO {
     Long id;
 
     @NotNull
-    Long cart_id;
+    @JsonProperty("cart_id")
+    Long cartId;
 
     @NotNull
     String product;

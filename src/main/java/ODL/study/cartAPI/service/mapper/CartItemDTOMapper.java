@@ -19,7 +19,7 @@ public class CartItemDTOMapper implements EntityToDTOMapper<CartItemDTO, CartIte
     @Override
     public CartItemDTO toDTO(CartItem entity, Object... args) {
         CartItemDTO dto = mapper.map(entity, CartItemDTO.class);
-        dto.setCart_id(entity.getCart().getId());
+        dto.setCartId(entity.getCart().getId());
         return dto;
     }
 

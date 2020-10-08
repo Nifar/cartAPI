@@ -24,6 +24,6 @@ import lombok.experimental.FieldDefaults;
 public class Cart extends AbstractEntity {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cart")
-    List<CartItem> carts;
+    List<CartItem> items;
 
 }

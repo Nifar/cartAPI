@@ -1,5 +1,6 @@
 package ODL.study.cartAPI.service.mapper;
 
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -22,7 +23,10 @@ public class CartDTOMapper implements EntityToDTOMapper<CartDTO, Cart, CartDTO> 
     @Override
     public CartDTO toDTO(Cart entity, Object... args) {
         CartDTO dto = mapper.map(entity, CartDTO.class);
-        dto.setCarts(entity.getCarts().stream().map(cartItemDTOMapper::toDTO).collect(Collectors.toList()));
+        if (entity.getItems() == null)
+            dto.setItems(new ArrayList());
+        else
+            dto.setItems(entity.getItems().stream().map(cartItemDTOMapper::toDTO).collect(Collectors.toList()));
         return dto;
     }
 
