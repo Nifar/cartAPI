@@ -17,7 +17,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CartDTOMapper implements EntityToDTOMapper<CartDTO, Cart, CartDTO> {
 
-    ModelMapper mapper = new ModelMapper();
+    ModelMapper mapper;
     CartItemDTOMapper cartItemDTOMapper;
 
     @Override

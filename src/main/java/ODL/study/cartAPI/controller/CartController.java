@@ -36,14 +36,19 @@ public class CartController {
     }
 
     @PostMapping("{cart}/items")
-    public CartItemDTO createCartItem(@PathVariable final Cart cart, @RequestParam final String product,
-            @RequestParam final int quantity) throws EntityNotFoundException {
+    public CartItemDTO createCartItem(@PathVariable final Cart cart,
+            @RequestParam(required = true) final String product, @RequestParam(required = true) final int quantity)
+            throws EntityNotFoundException {
+        if (cart == null)
+            throw new EntityNotFoundException("This cart do not exist!");
         return cartItemSrvice.create(new CartItem(cart, product, quantity));
     }
 
     @DeleteMapping("{cart}/items/{cartItemId}")
     public void deleteCartItem(@PathVariable final Cart cart, @PathVariable final Long cartItemId) {
-        cartItemSrvice.deleteByIdAndCart(cartItemId, cart);
+        if (cart == null)
+            throw new EntityNotFoundException("This cart do not exist!");
+        cartItemSrvice.delete(cartItemId);
     }
 
     @GetMapping("{cartId}")

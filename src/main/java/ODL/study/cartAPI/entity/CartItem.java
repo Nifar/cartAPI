@@ -6,6 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -28,9 +30,11 @@ public class CartItem extends AbstractEntity {
     Cart cart;
 
     @Column(nullable = false)
+    @NotBlank(message = "Product is mandatory")
     String product;
 
     @Column(nullable = false)
+    @Min(value = 1, message = "Quantity cant'be lower than 1")
     int quantity;
 
 }

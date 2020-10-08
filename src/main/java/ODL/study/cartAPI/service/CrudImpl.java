@@ -25,24 +25,25 @@ public class CrudImpl<Entity extends AbstractEntity, Repository extends JpaRepos
     DTOMapper mapper;
 
     @Override
-    public DTO create(Entity entity) {
+    public DTO create(final Entity entity) {
         return mapper.toDTO(repository.saveAndFlush(entity));
     }
 
     @Override
-    public DTO read(long id) throws EntityNotFoundException {
+    public DTO read(final long id) throws EntityNotFoundException {
         Entity entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
         return mapper.toDTO(entity);
     }
 
     @Override
-    public DTO update(Entity entity) {
+    public DTO update(final Entity entity) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(final long id) throws EntityNotFoundException {
+        repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
         repository.deleteById(id);
     }
 

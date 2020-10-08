@@ -16,5 +16,5 @@ public interface CrudService<Entity, DTO> {
 
     DTO update(Entity entity);
 
-    void delete(long id);
+    void delete(long id) throws EntityNotFoundException;
 }
