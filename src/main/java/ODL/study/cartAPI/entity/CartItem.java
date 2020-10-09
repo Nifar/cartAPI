@@ -26,7 +26,7 @@ import lombok.experimental.FieldDefaults;
 public class CartItem extends AbstractEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "cart_id")
+    @JoinColumn(name = "cart_id", nullable = false)
     Cart cart;
 
     @Column(nullable = false)
