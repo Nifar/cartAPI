@@ -23,10 +23,8 @@ public class CartDTOMapper implements EntityToDTOMapper<CartDTO, Cart, CartDTO> 
     @Override
     public CartDTO toDTO(Cart entity, Object... args) {
         CartDTO dto = mapper.map(entity, CartDTO.class);
-        if (entity.getItems() == null)
-            dto.setItems(new ArrayList());
-        else
-            dto.setItems(entity.getItems().stream().map(cartItemDTOMapper::toDTO).collect(Collectors.toList()));
+        dto.setItems(entity.getItems() == null ? new ArrayList()
+                : entity.getItems().stream().map(cartItemDTOMapper::toDTO).collect(Collectors.toList()));
         return dto;
     }
 
