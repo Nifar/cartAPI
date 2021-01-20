@@ -6,12 +6,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import javax.transaction.Transactional;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import ODL.study.cartAPI.entity.Cart;
@@ -22,9 +21,9 @@ import ODL.study.cartAPI.service.mapper.CartDTOMapper;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
-@SpringBootTest
+@SpringBootTest(classes = Runner.class)
 @AutoConfigureMockMvc
-@Transactional
+@ActiveProfiles("test")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CartControllerTest {
 
