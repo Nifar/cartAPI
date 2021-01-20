@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @ControllerAdvice
 public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHandler {
@@ -58,8 +58,8 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @Data
-    @AllArgsConstructor
+    @RequiredArgsConstructor
     private static class ErrorMessage {
-        private String message;
+        private final String message;
     }
 }
