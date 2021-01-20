@@ -14,7 +14,7 @@ import lombok.experimental.FieldDefaults;
 
 @Service
 @Lazy
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PROTECTED)
 public class CrudImpl<Entity extends AbstractEntity, Repository extends JpaRepository<Entity, Long>, DTO, DTOMapper extends EntityToDTOMapper<DTO, Entity, DTO>>
         implements CrudService<Entity, DTO> {
 

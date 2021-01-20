@@ -1,5 +1,6 @@
 package ODL.study.cartAPI.entity;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,14 +20,15 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @Entity
-@Table
+@Table(name = "cart_items")
 @AllArgsConstructor
 @NoArgsConstructor
+@AttributeOverride(name = "id", column = @Column(name = "ci_id"))
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CartItem extends AbstractEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "cart_id", nullable = false)
+    @JoinColumn(name = "c_id", nullable = false)
     Cart cart;
 
     @Column(nullable = false)

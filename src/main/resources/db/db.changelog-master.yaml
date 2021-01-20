@@ -1,0 +1,7 @@
+databaseChangeLog:
+- include:
+    file: changelog/db.changelog-carts.yaml
+    relativeToChangelogFile: true
+- include:
+    file: changelog/db.changelog-cart-items.yaml
+    relativeToChangelogFile: true

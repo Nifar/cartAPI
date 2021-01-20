@@ -1,5 +1,8 @@
 package ODL.study.cartAPI.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 
@@ -19,9 +22,11 @@ public class CartItemDTO {
     Long cartId;
 
     @NotNull
+    @NotBlank(message = "Product is mandatory")
     String product;
 
     @NotNull
+    @Min(value = 1, message = "Quantity cant'be lower than 1")
     int quantity;
 
 }

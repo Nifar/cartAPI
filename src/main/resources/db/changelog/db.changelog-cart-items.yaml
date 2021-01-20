@@ -1,0 +1,41 @@
+databaseChangeLog:
+- changeSet:
+    id: create_cart_items_table
+    author: venera123555@gmail.com
+    changes:
+    - createTable:
+        tableName: cart_items
+        columns:
+        - column:
+            name: ci_id
+            type: BIGINT
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: pk_cart_items
+        - column:
+            name: c_id
+            type: BIGINT
+            constraints:
+              nullable: false
+        - column:
+            name: product
+            type: varchar(255)
+            constraints:
+              nullable: false
+        - column:
+            name: quantity
+            type: integer
+            constraints:
+              nullable: false
+    - addAutoIncrement:
+        columnName: ci_id
+        incrementBy: 1
+        startWith: 1
+        tableName: cart_items
+    - addForeignKeyConstraint:
+        baseColumnNames: c_id
+        baseTableName: cart_items
+        constraintName: fk_cart_items_carts
+        referencedColumnNames: c_id
+        referencedTableName: carts
